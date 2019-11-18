@@ -3,7 +3,7 @@ import ShareButton from 'react-share';
 
 const App = () => (
 	<>
-		<ShareButton/>
+		<ShareButton title="Поделиться"/>
 	</>
 );
 
