@@ -1,10 +1,11 @@
 import React from 'react';
-import ShareButton from 'react-share';
+import {ShareButton, SocialList} from 'react-share';
 
 const App = () => (
-	<>
-		<ShareButton title="Поделиться"/>
-	</>
+	<div className="wrapper">
+		<ShareButton />
+		<SocialList />
+	</div>
 );
 
 export default App;

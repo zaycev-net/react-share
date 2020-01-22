@@ -13,3 +13,16 @@ body {
 	align-items: center;
 	min-height: 100vh;
 }
+
+.wrapper {
+	display: flex;
+}
+
+.wrapper > div {
+	margin-right: 5em;
+}
+
+.wrapper > div:last-child {
+	margin-right: 0;
+}
+
