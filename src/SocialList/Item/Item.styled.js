@@ -9,55 +9,59 @@ const color = {
 };
 
 export const Root = styled.li`
-	min-width: 13em;
-	border: 1px solid #fff;
 	margin-bottom: 1em;
-    line-height: 1.5;
-    text-align: left;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #000;
-    background-color: transparent;
-    transition: background-color .2s ease-in-out, color .2s ease-in-out;
-    position: relative;
-    z-index: 1;
-    
-    &:last-child {
-        margin-bottom: 0;
-    }
-    
-	& > div > svg {
-        width: 1rem;
-        height: 1rem;
-        padding: 0.3rem .5em;
-        fill: #000;
-        transition: fill .2s ease-in-out;
-        margin-right: 0;
-    }
-    
-	&:hover {
-		background-color: #fff;
-		color: #fff;
-		
-		svg {
-			fill: #fff;
-		}
-	}
 	
-	${({name}) => name && css`
-		border: 1px solid ${color[name]};
-		color: ${color[name]};
+	&:last-child {
+		margin-bottom: 0;
+	}
+    
+    a {
+		min-width: 13em;
+		border: 1px solid #fff;
+	    line-height: 1.5;
+	    text-align: left;
+	    cursor: pointer;
+	    display: flex;
+	    justify-content: space-between;
+	    align-items: center;
+	    color: #000;
+	    background-color: transparent;
+	    transition: background-color .2s ease-in-out, color .2s ease-in-out;
+	    position: relative;
+	    z-index: 1;
+	    text-decoration: none; 
+	    
+	    &:hover {
+			background-color: #fff;
+			color: #fff;
+			
+			svg {
+				fill: #fff;
+			}
+		}
 		
 		& > div > svg {
-			fill: ${color[name]};
-		}
+	        width: 1rem;
+	        height: 1rem;
+	        padding: 0.3rem .5em;
+	        fill: #000;
+	        transition: fill .2s ease-in-out;
+	        margin-right: 0;
+	    }
 		
-		&:hover {
-			background-color: ${color[name]};
-		}
-	`}
+		${({name}) => name && css`
+			border: 1px solid ${color[name]};
+			color: ${color[name]};
+			
+			& > div > svg {
+				fill: ${color[name]};
+			}
+			
+			&:hover {
+				background-color: ${color[name]};
+			}
+		`}
+    }
 `;
 
 export const Info = styled.div`
