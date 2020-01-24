@@ -1,10 +1,10 @@
 import React from 'react';
 
-import VK from '../../../assets/social/vk.svg';
-import Mail from '../../../assets/social/mail.svg';
-import OK from '../../../assets/social/ok.svg';
-import Facebook from '../../../assets/social/facebook.svg';
-import Twitter from '../../../assets/social/twitter.svg';
+import VK from '../assets/social/vk.svg';
+import Mail from '../assets/social/mail.svg';
+import OK from '../assets/social/ok.svg';
+import Facebook from '../assets/social/facebook.svg';
+import Twitter from '../assets/social/twitter.svg';
 
 const renderIcon = name => {
 	switch (name) {

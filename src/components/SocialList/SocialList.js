@@ -10,26 +10,18 @@ import Root from './SocialList.styled';
 const SocialList = ({
 	style, className, list, toCount, defaultUrl
 }) => {
-	const {
-		countList
-	} = useSocialList(toCount, list);
+	const {countList} = useSocialList(list, toCount, defaultUrl);
 
 	return (
 		<Root style={style} className={className}>
 			{
-				list.map(item => {
-					const count = (countList && countList[item.name]) || 0;
-
-					return (
-						<Item
-							key={item.name}
-							{...item}
-							defaultUrl={defaultUrl}
-							toCount={toCount}
-							count={count}
-						/>
-					);
-				})
+				countList.map(item => (
+					<Item
+						key={item.name}
+						{...item}
+						toCount={toCount}
+					/>
+				))
 			}
 		</Root>
 	);

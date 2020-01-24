@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import SocialList from '../SocialList/SocialList';
 
-import ShareIcon from '../assets/share-icon.svg';
+import ShareIcon from '../../assets/share-icon.svg';
 
 import useShareButton from './hooks/useShareButton';
 

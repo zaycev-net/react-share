@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import renderIcon from './utils/renderIcon';
+import renderIcon from '../../../utils/renderIcon';
 
 import {Root, Info, Count} from './Item.styled';
 import useSocialListItem from './hooks/useSocialListItem';
 
 const SocialListItem = ({
-	name, textButton, count, toCount, defaultUrl
+	name, textButton, count, toCount, url
 }) => {
-	const {url, clickHandler} = useSocialListItem(defaultUrl, name);
+	const {clickHandler} = useSocialListItem(name, url);
 
 	return (
 		<Root name={name}>
@@ -28,7 +28,7 @@ const SocialListItem = ({
 					toCount
 					&& (
 						<Count>
-							{count}
+							{count > 999 ? `${(count / 1000).toFixed()}K` : count}
 						</Count>
 					)
 				}
@@ -40,7 +40,7 @@ const SocialListItem = ({
 SocialListItem.propTypes = {
 	name: PropTypes.string.isRequired,
 	textButton: PropTypes.string.isRequired,
-	defaultUrl: PropTypes.string,
+	url: PropTypes.string,
 	count: PropTypes.number,
 	toCount: PropTypes.bool
 };

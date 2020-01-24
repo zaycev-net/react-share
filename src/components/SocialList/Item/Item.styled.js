@@ -67,8 +67,10 @@ export const Root = styled.li`
 export const Info = styled.div`
 	display: flex;
 	align-items: center;
+	margin-right: 1em;
 `;
 
 export const Count = styled.div`
 	margin-right: .5em;
+	font-size: .75rem;
 `;
