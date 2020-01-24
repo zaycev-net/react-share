@@ -10,9 +10,11 @@ import useShareButton from './hooks/useShareButton';
 import {Wrapper, Button, Tooltip} from './ShareButton.styled';
 
 const ShareButton = ({
-	title, style, className, toCount, socialList, url
+	title, style, className, toCount, list, url
 }) => {
-	const {ref, visible, toggleVisible} = useShareButton();
+	const {
+		ref, data, visible, setData, toggleVisible
+	} = useShareButton();
 
 	return (
 		<Wrapper ref={ref}>
@@ -32,8 +34,10 @@ const ShareButton = ({
 					<Tooltip>
 						<SocialList
 							toCount={toCount}
-							socialList={socialList}
+							list={list}
 							url={url}
+							oldData={data}
+							setData={setData}
 						/>
 					</Tooltip>
 				)
@@ -47,7 +51,7 @@ ShareButton.propTypes = {
 	className: PropTypes.string,
 	style: PropTypes.objectOf(PropTypes.string),
 	toCount: PropTypes.bool,
-	socialList: PropTypes.arrayOf(PropTypes.exact({
+	list: PropTypes.arrayOf(PropTypes.exact({
 		name: PropTypes.oneOf(['vk', 'mail', 'ok', 'facebook', 'twitter']),
 		textButton: PropTypes.string
 	})),
@@ -57,7 +61,7 @@ ShareButton.propTypes = {
 ShareButton.defaultProps = {
 	title: 'Поделиться',
 	toCount: true,
-	socialList: [
+	list: [
 		{
 			name: 'vk',
 			textButton: 'Вконтакте'

@@ -41,6 +41,7 @@ export const Tooltip = styled.div`
     background: #fff;
     padding: 1em;
     transform: translateX(-50%);
+    min-width: 13rem;
     
     &:before {
         content: '';

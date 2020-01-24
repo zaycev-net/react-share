@@ -3,8 +3,8 @@ import {ShareButton, SocialList} from 'react-share';
 
 const App = () => (
 	<div className="wrapper">
-		<ShareButton />
-		<SocialList />
+		<ShareButton/>
+		<SocialList/>
 	</div>
 );
 

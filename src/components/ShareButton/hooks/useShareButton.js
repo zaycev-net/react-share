@@ -1,6 +1,7 @@
 import {useState, useEffect, useRef} from 'react';
 
 const useShareButton = () => {
+	const [data, setData] = useState(null);
 	const [visible, setVisible] = useState(false);
 	const ref = useRef(null);
 
@@ -20,11 +21,13 @@ const useShareButton = () => {
 		document.addEventListener('click', handleClickOutside, true);
 
 		return () => document.removeEventListener('click', handleClickOutside, true);
-	});
+	}, []);
 
 	return {
 		ref,
+		data,
 		visible,
+		setData,
 		toggleVisible
 	};
 };
