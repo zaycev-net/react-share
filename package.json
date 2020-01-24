@@ -1,7 +1,7 @@
 {
-  "name": "react-share",
+  "name": "react-social-btn",
   "version": "1.0.0",
-  "description": "Social media share buttons and share counts for React.",
+  "description": "Buttons Share on social networks with the number of users to rate for React.",
   "author": "zaycev-net",
   "license": "MIT",
   "repository": "https://github.com/zaycev-net/react-share",

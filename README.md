@@ -1,34 +1,96 @@
-# react-share
+# react-social-btn
 
-> Social media share buttons and share counts for React.
+> Buttons "Share" on social networks with the number of users to rate for React.
 
 [![NPM](https://img.shields.io/npm/v/react-share.svg)](https://www.npmjs.com/package/react-share) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
+This package requires `node >= 4`, but we recommend `node >= 8`.
 
 ```bash
-npm install --save react-share
+yarn add react-social-btn
 ```
 
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import React from 'react';
 
-import { useMyHook } from 'react-share'
+import {ShareButton, SocialList} from 'react-share';
 
 const Example = () => {
-  const example = useMyHook()
-  return (
-    <div>{example}</div>
-  )
-}
+    const list = [
+        {
+            name: 'vk',
+            textButton: 'Vkontakte'
+        },
+        {
+            name: 'mail',
+            textButton: 'My@Mail.ru'
+        },
+        {
+            name: 'ok',
+            textButton: 'Odnoklassniki'
+        },
+        {
+            name: 'facebook',
+            textButton: 'Facebook'
+        },
+        {
+            name: 'twitter',
+            textButton: 'Twitter'
+        }
+    ];
+ 
+    return (
+        <>
+            <ShareButton
+                title="Share"
+                style={{
+                    marginBottom: '1em'
+                }}
+                className="share"
+                toCount={true}
+                list={list}
+                defaultUrl="https://zaycev.net"
+            />
+            <SocialList
+                style={{
+                    marginBottom: '1em'
+                }}
+                className="share-list"
+                list={list}
+                toCount={true}
+                defaultUrl="https://zaycev.net"
+            />
+        </>
+    );
+};
 ```
+
+### Props
+
+#### ShareButton
+
+Name props | Default | Optional props | Description
+--- | --- | --- | ---
+`title` | Поделиться | | Title button
+`style` | | | Other styles from Button
+`className` | | | Extra className from Button
+`toCount` | true | true/false | Enabled/Disabled count social share
+`list` | All social | array |  List name and title button  
+`defaultUrl` | | | Default Url
+
+#### SocialList
+
+Name props | Default | Optional props | Description
+--- | --- | --- | ---
+`style` | | | Other styles from Button
+`className` | | | Extra className from Button
+`toCount` | true | true/false | Enabled/Disabled count social share
+`list` | All social | array |  List name and title button  
+`defaultUrl` | | | Default Url
 
 ## License
 
-MIT © [](https://github.com/)
-
----
-
-This hook is created using [create-react-hook](https://github.com/hermanya/create-react-hook).
+MIT © [Zaycev.net](https://github.com/zaycev-net)
