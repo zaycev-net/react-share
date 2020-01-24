@@ -9,15 +9,16 @@ import useSocialListItem from './hooks/useSocialListItem';
 const SocialListItem = ({
 	name, textButton, count, toCount, defaultUrl
 }) => {
-	const {url, socialUrl} = useSocialListItem(defaultUrl);
+	const {url, clickHandler} = useSocialListItem(defaultUrl, name);
 
 	return (
 		<Root name={name}>
 			<a
-				href={`${socialUrl[name]}${url}`}
+				href={url}
 				target="_blank"
 				rel="noopener noreferrer"
 				title={textButton}
+				onClick={clickHandler}
 			>
 				<Info>
 					{renderIcon(name)}
