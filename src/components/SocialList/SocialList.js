@@ -10,6 +10,7 @@ import Root from './SocialList.styled';
 const SocialList = ({
 	style, className, list, toCount, defaultUrl, oldData, setData
 }) => {
+	// можно попробовать убрать setData и oldData, при toggle дергать display:none
 	const {countList} = useSocialList(list, toCount, defaultUrl, oldData, setData);
 
 	return (

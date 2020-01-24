@@ -6,6 +6,7 @@ import {socialUrl, requestUrl} from '../../../utils/urlList';
 const useSocialList = (list, toCount, defaultUrl, oldData, setData) => {
 	const [countList, setCountList] = useState([]);
 	const request = async (name, url) => {
+		// если один метод сломается, остальные не сработают (обработка ошибок)
 		const {data} = await axios.get(requestUrl(url)[name]);
 		const count = name === 'facebook' ? data.engagement.share_count : data.count;
 
