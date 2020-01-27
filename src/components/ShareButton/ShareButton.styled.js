@@ -1,4 +1,4 @@
-`import styled, {css} from 'styled-components';
+import styled, {css} from 'styled-components';
 
 export const Wrapper = styled.div`
 	position: relative;
@@ -22,11 +22,11 @@ export const Button = styled.button`
 	font-size: .8125em;
 	transition: background-color .2s ease-in-out;
 	position: relative;
-
+	
 	&:hover {
 		background-color: #e5f6fb;
 	}
-
+	
 	svg {
 		margin-right: .625rem;
 	}
@@ -43,7 +43,7 @@ export const Tooltip = styled.div`
 	box-shadow: 0 0 5px 0 rgba(0,0,0,.25);
 	background: #fff;
 	padding: 1em;
-
+	
 	&:after {
 		content: '';
 		background-color: #fff;
@@ -56,7 +56,7 @@ export const Tooltip = styled.div`
 		box-shadow: 0 0 5px 0 rgba(0,0,0,.25);
 		z-index: 0;
 	}
-
+	
 	&:before {
 		content: '';
 		background-color: #fff;
