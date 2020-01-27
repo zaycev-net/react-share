@@ -16,7 +16,7 @@ yarn add react-social-btn
 ```jsx
 import React from 'react';
 
-import {ShareButton, SocialList} from 'react-share';
+import {ShareButton, SocialList} from 'react-social-btn';
 
 const Example = () => {
     const list = [
