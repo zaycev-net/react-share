@@ -8,10 +8,9 @@ import useSocialList from './hooks/useSocialList';
 import Root from './SocialList.styled';
 
 const SocialList = ({
-	style, className, list, toCount, defaultUrl, oldData, setData
+	style, className, list, toCount, defaultUrl
 }) => {
-	// можно попробовать убрать setData и oldData, при toggle дергать display:none
-	const {countList} = useSocialList(list, toCount, defaultUrl, oldData, setData);
+	const {countList} = useSocialList(list, toCount, defaultUrl);
 
 	return (
 		<Root style={style} className={className}>
@@ -36,9 +35,7 @@ SocialList.propTypes = {
 	list: PropTypes.arrayOf(PropTypes.exact({
 		name: PropTypes.oneOf(['vk', 'mail', 'ok', 'facebook', 'twitter']),
 		textButton: PropTypes.string
-	})),
-	oldData: PropTypes.array,
-	setData: PropTypes.func
+	}))
 };
 
 SocialList.defaultProps = {

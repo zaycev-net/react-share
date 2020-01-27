@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+`import styled, {css} from 'styled-components';
 
 export const Wrapper = styled.div`
 	position: relative;
@@ -22,48 +22,53 @@ export const Button = styled.button`
 	font-size: .8125em;
 	transition: background-color .2s ease-in-out;
 	position: relative;
-	
+
 	&:hover {
 		background-color: #e5f6fb;
 	}
-	
+
 	svg {
 		margin-right: .625rem;
 	}
 `;
 
 export const Tooltip = styled.div`
-    position: absolute;
-    top: 4em;
-    left: 50%;
-    z-index: 10;
-    box-shadow: 0 0 5px 0 rgba(0,0,0,.25);
-    background: #fff;
-    padding: 1em;
-    transform: translateX(-50%);
-    min-width: 13rem;
-    
-    &:before {
-        content: '';
-        background-color: #fff;
-        position: absolute;
-        left: 50%;
-        top: -8px;
-        width: 1.875rem;
-        height: 1.875rem;
+	position: absolute;
+	top: 4em;
+	left: 50%;
+	z-index: 10;
+	min-width: 13rem;
+	transform: translateX(-50%);
+	box-sizing: border-box;
+	box-shadow: 0 0 5px 0 rgba(0,0,0,.25);
+	background: #fff;
+	padding: 1em;
+
+	&:after {
+		content: '';
+		background-color: #fff;
+		position: absolute;
+		left: 50%;
+		top: -8px;
+		width: 1.875rem;
+		height: 1.875rem;
 		transform: translateX(-50%) rotate(45deg);
 		box-shadow: 0 0 5px 0 rgba(0,0,0,.25);
 		z-index: 0;
-    }
-    
-    &:after {
-        content: '';
-        background-color: #fff;
-        position: absolute;
-        width: 3.125rem;
-	    height: 2rem;
-	    left: 50%;
-	    top: 0;
-		transform: translateX(-50%);
-    }
+	}
+
+	&:before {
+		content: '';
+		background-color: #fff;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		z-index: 1;
+	}
+
+    ${({visible}) => !visible && css`
+		display: none;
+	`}
 `;

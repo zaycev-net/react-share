@@ -10,6 +10,7 @@
   "rules": {
     "promise/prefer-await-to-then": "error",
     "no-shadow": ["off"],
+    "no-console": "off",
     "import/no-extraneous-dependencies": [
       "error",
       {

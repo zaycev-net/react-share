@@ -13,7 +13,7 @@ const ShareButton = ({
 	title, style, className, toCount, list, defaultUrl
 }) => {
 	const {
-		ref, data, visible, setData, toggleVisible
+		ref, enabled, visible, toggleVisible
 	} = useShareButton();
 
 	return (
@@ -29,15 +29,13 @@ const ShareButton = ({
 				{title}
 			</Button>
 			{
-				visible
+				enabled
 				&& (
-					<Tooltip>
+					<Tooltip visible={visible}>
 						<SocialList
 							toCount={toCount}
 							list={list}
 							url={defaultUrl}
-							oldData={data}
-							setData={setData}
 						/>
 					</Tooltip>
 				)

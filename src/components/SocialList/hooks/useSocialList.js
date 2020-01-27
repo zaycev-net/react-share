@@ -3,24 +3,22 @@ import {useState, useEffect, useCallback} from 'react';
 
 import {socialUrl, requestUrl} from '../../../utils/urlList';
 
-const useSocialList = (list, toCount, defaultUrl, oldData, setData) => {
+const useSocialList = (list, toCount, defaultUrl) => {
 	const [countList, setCountList] = useState([]);
 	const request = async (name, url) => {
-		// если один метод сломается, остальные не сработают (обработка ошибок)
-		const {data} = await axios.get(requestUrl(url)[name]);
-		const count = name === 'facebook' ? data.engagement.share_count : data.count;
+		try {
+			const {data} = await axios.get(requestUrl(url)[name]);
+			const count = name === 'facebook' ? data.engagement.share_count : data.count;
 
-		return Number(count);
+			return Number(count);
+		} catch (e) {
+			console.error(e);
+		}
 	};
 	const requestCount = useCallback(async url => {
-		if (oldData && oldData.length) {
-			setCountList(oldData);
-		} else {
-			setCountList(list);
-			if (setData) setData(list);
-		}
+		setCountList(list);
 
-		if (toCount && !oldData) {
+		if (toCount) {
 			const newList = await Promise.all(list.map(async ({name, textButton}) => ({
 				name,
 				textButton,
@@ -29,7 +27,6 @@ const useSocialList = (list, toCount, defaultUrl, oldData, setData) => {
 			})));
 
 			setCountList(newList);
-			if (setData) setData(newList);
 		}
 	}, [defaultUrl, list]);
 

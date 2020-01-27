@@ -1,14 +1,12 @@
 import {useState, useEffect, useRef} from 'react';
 
 const useShareButton = () => {
-	const [data, setData] = useState(null);
+	const [enabled, setEnabled] = useState(false);
 	const [visible, setVisible] = useState(false);
 	const ref = useRef(null);
 
-	const toggleVisible = e => {
-		// зачем здесь stopPropagation?
-		e.stopPropagation();
-
+	const toggleVisible = () => {
+		setEnabled(true);
 		setVisible(prev => !prev);
 	};
 
@@ -26,9 +24,8 @@ const useShareButton = () => {
 
 	return {
 		ref,
-		data,
+		enabled,
 		visible,
-		setData,
 		toggleVisible
 	};
 };
