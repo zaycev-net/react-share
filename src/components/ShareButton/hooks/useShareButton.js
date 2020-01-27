@@ -6,6 +6,7 @@ const useShareButton = () => {
 	const ref = useRef(null);
 
 	const toggleVisible = e => {
+		// зачем здесь stopPropagation?
 		e.stopPropagation();
 
 		setVisible(prev => !prev);
