@@ -27,14 +27,22 @@ const useSocialList = (list, toCount, defaultUrl) => {
 			})));
 
 			setCountList(newList);
+		} else {
+			const newList = list.map(({name, textButton}) => ({
+				name,
+				textButton,
+				url: socialUrl(url)[name]
+			}));
+
+			setCountList(newList);
 		}
-	}, [defaultUrl, list]);
+	}, [list, toCount]);
 
 	useEffect(() => {
 		const url = defaultUrl || document.location.href;
 
 		requestCount(url);
-	}, [list, requestCount]);
+	}, [defaultUrl, list, requestCount]);
 
 	return {
 		countList
