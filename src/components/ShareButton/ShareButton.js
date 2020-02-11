@@ -17,10 +17,8 @@ const ShareButton = ({
 	} = useShareButton();
 
 	return (
-		<Wrapper ref={ref}>
+		<Wrapper ref={ref} className={className} style={style}>
 			<Button
-				style={style}
-				className={className}
 				title={title}
 				visible={visible}
 				onClick={toggleVisible}
