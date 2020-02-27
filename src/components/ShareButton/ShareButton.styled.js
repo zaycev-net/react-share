@@ -15,13 +15,14 @@ export const Button = styled.button`
 	border-radius: 4px;
 	font-family: 'Roboto', sans-serif;
 	cursor: pointer;
-	padding: .7195rem .625rem;
+	padding: .625rem .75rem;
 	background-color: ${({visible}) => (visible ? '#e5f6fb' : '#fff')};
 	outline: none;
 	color: #00aadc;
-	font-size: .8125em;
+	font-size: .875rem;
 	transition: background-color .2s ease-in-out;
 	position: relative;
+	min-height: 2.5rem;
 	
 	&:hover {
 		background-color: #e5f6fb;
@@ -29,6 +30,8 @@ export const Button = styled.button`
 	
 	svg {
 		margin-right: .625rem;
+		width: .75rem;
+		height: .875rem;
 	}
 `;
 
