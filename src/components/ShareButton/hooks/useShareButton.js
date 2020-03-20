@@ -15,7 +15,9 @@ const useShareButton = callback => {
 			setVisible(false);
 		}
 
-		callback();
+		if (callback) {
+			callback();
+		}
 	};
 
 	useEffect(() => {
