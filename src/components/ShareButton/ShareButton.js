@@ -10,11 +10,11 @@ import useShareButton from './hooks/useShareButton';
 import {Wrapper, Button, Tooltip} from './ShareButton.styled';
 
 const ShareButton = ({
-	title, style, className, toCount, list, defaultUrl
+	title, style, className, toCount, list, defaultUrl, callback
 }) => {
 	const {
 		ref, enabled, visible, toggleVisible
-	} = useShareButton();
+	} = useShareButton(callback);
 
 	return (
 		<Wrapper ref={ref} className={className} style={style}>
@@ -51,7 +51,8 @@ ShareButton.propTypes = {
 		name: PropTypes.oneOf(['vk', 'mail', 'ok', 'facebook', 'twitter']),
 		textButton: PropTypes.string
 	})),
-	defaultUrl: PropTypes.string
+	defaultUrl: PropTypes.string,
+	callback: PropTypes.func
 };
 
 ShareButton.defaultProps = {

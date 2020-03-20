@@ -1,6 +1,6 @@
 import {useState, useEffect, useRef} from 'react';
 
-const useShareButton = () => {
+const useShareButton = callback => {
 	const [enabled, setEnabled] = useState(false);
 	const [visible, setVisible] = useState(false);
 	const ref = useRef(null);
@@ -14,6 +14,8 @@ const useShareButton = () => {
 		if (ref.current && !ref.current.contains(event.target)) {
 			setVisible(false);
 		}
+
+		callback();
 	};
 
 	useEffect(() => {

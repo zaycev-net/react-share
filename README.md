@@ -80,6 +80,7 @@ Name props | Default | Optional props | Description
 `toCount` | true | true/false | Enabled/Disabled count social share
 `list` | All social | array |  List name and title button  
 `defaultUrl` | | | Default Url
+`callback` | | | Callback from button click
 
 #### SocialList
 
