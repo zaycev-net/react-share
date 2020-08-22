@@ -33,8 +33,9 @@ SocialList.propTypes = {
 	style: PropTypes.objectOf(PropTypes.string),
 	toCount: PropTypes.bool,
 	list: PropTypes.arrayOf(PropTypes.exact({
-		name: PropTypes.oneOf(['vk', 'mail', 'ok', 'facebook', 'twitter']),
-		textButton: PropTypes.string
+		name: PropTypes.oneOf(['vk', 'mail', 'ok', 'facebook', 'twitter', 'telegram']),
+		textButton: PropTypes.string,
+		utm: PropTypes.string
 	}))
 };
 
@@ -43,23 +44,33 @@ SocialList.defaultProps = {
 	list: [
 		{
 			name: 'vk',
-			textButton: 'Вконтакте'
+			textButton: 'Вконтакте',
+			utm: 'vk'
 		},
 		{
 			name: 'mail',
-			textButton: 'Мой мир'
+			textButton: 'Мой мир',
+			utm: 'mail'
 		},
 		{
 			name: 'ok',
-			textButton: 'Одноклассники'
+			textButton: 'Одноклассники',
+			utm: 'ok'
 		},
 		{
 			name: 'facebook',
-			textButton: 'Facebook'
+			textButton: 'Facebook',
+			utm: 'facebook'
 		},
 		{
 			name: 'twitter',
-			textButton: 'Twitter'
+			textButton: 'Twitter',
+			utm: 'twitter'
+		},
+		{
+			name: 'telegram',
+			textButton: 'Telegram',
+			utm: 'telegram'
 		}
 	]
 };
