@@ -22,23 +22,33 @@ const Example = () => {
     const list = [
         {
             name: 'vk',
-            textButton: 'Vkontakte'
+            textButton: 'Vkontakte',
+            utm: '?utm' //optional
         },
         {
             name: 'mail',
-            textButton: 'My@Mail.ru'
+            textButton: 'My@Mail.ru',
+            utm: '?utm' //optional
         },
         {
             name: 'ok',
-            textButton: 'Odnoklassniki'
+            textButton: 'Odnoklassniki',
+            utm: '?utm' //optional
         },
         {
             name: 'facebook',
-            textButton: 'Facebook'
+            textButton: 'Facebook',
+            utm: '?utm' //optional
         },
         {
             name: 'twitter',
-            textButton: 'Twitter'
+            textButton: 'Twitter',
+            utm: '?utm' //optional
+        },
+        {
+            name: 'telegram',
+            extButton: 'Telegram',
+            utm: '?utm' //optional
         }
     ];
  
