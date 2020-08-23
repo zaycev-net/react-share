@@ -19,19 +19,19 @@ const useSocialList = (list, toCount, defaultUrl) => {
 		setCountList(list);
 
 		if (toCount) {
-			const newList = await Promise.all(list.map(async ({name, textButton}) => ({
+			const newList = await Promise.all(list.map(async ({name, textButton, utm}) => ({
 				name,
 				textButton,
-				url: socialUrl(url)[name],
+				url: socialUrl(utm ? url + utm : url)[name],
 				count: await request(name, url)
 			})));
 
 			setCountList(newList);
 		} else {
-			const newList = list.map(({name, textButton}) => ({
+			const newList = list.map(({name, textButton, utm}) => ({
 				name,
 				textButton,
-				url: socialUrl(url)[name]
+				url: socialUrl(utm ? url + utm : url)[name]
 			}));
 
 			setCountList(newList);

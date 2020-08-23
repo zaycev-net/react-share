@@ -11,5 +11,6 @@ export const socialUrl = url => ({
 	mail: `https://connect.mail.ru/share?share_url=${url}`,
 	ok: `https://connect.ok.ru/offer?url=${url}`,
 	facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
-	twitter: `https://twitter.com/intent/tweet?url=${url}`
+	twitter: `https://twitter.com/intent/tweet?url=${url}`,
+	telegram: `https://t.me/share/url?url=${url}`
 });

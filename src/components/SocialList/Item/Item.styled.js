@@ -5,7 +5,8 @@ const color = {
 	mail: '#00468c',
 	ok: '#f59310',
 	facebook: '#2851a3',
-	twitter: '#00b7ec'
+	twitter: '#00b7ec',
+	telegram: '#039be5'
 };
 
 export const Root = styled.li`
