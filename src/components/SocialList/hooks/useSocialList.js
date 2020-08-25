@@ -7,10 +7,12 @@ const useSocialList = (list, toCount, defaultUrl) => {
 	const [countList, setCountList] = useState([]);
 	const request = async (name, url) => {
 		try {
-			const {data} = await axios.get(requestUrl(url)[name]);
-			const count = name === 'facebook' ? data.engagement.share_count : data.count;
+		  if (name !== 'telegram') {
+				const {data} = await axios.get(requestUrl(url)[name]);
+				const count = name === 'facebook' ? data.engagement.share_count : data.count;
 
-			return Number(count);
+				return Number(count);
+			}
 		} catch (e) {
 			console.error(e);
 		}
