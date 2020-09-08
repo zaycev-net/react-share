@@ -33,7 +33,7 @@ const ShareButton = ({
 						<SocialList
 							toCount={toCount}
 							list={list}
-							url={defaultUrl}
+							defaultUrl={defaultUrl}
 						/>
 					</Tooltip>
 				)
