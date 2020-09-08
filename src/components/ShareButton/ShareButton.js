@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import SocialList from '../SocialList/SocialList';
+import CopyLinkButton from './CopyButton/CopyButtonLink';
 
 import ShareIcon from '../../assets/share-icon.svg';
 
@@ -10,10 +11,10 @@ import useShareButton from './hooks/useShareButton';
 import {Wrapper, Button, Tooltip} from './ShareButton.styled';
 
 const ShareButton = ({
-	title, style, className, toCount, list, defaultUrl, callback
+	title, style, className, toCount, list, defaultUrl, callback, copyTitle
 }) => {
 	const {
-		ref, enabled, visible, toggleVisible
+		ref, enabled, visible, toggleVisible, handleCopyLink
 	} = useShareButton(callback);
 
 	return (
@@ -35,6 +36,7 @@ const ShareButton = ({
 							list={list}
 							url={defaultUrl}
 						/>
+						<CopyLinkButton copyTitle={copyTitle} handleCopyLink={handleCopyLink}/>
 					</Tooltip>
 				)
 			}
@@ -47,6 +49,7 @@ ShareButton.propTypes = {
 	className: PropTypes.string,
 	style: PropTypes.objectOf(PropTypes.string),
 	toCount: PropTypes.bool,
+	copyTitle: PropTypes.string,
 	list: PropTypes.arrayOf(PropTypes.exact({
 		name: PropTypes.oneOf(['vk', 'mail', 'ok', 'facebook', 'twitter', 'telegram']),
 		textButton: PropTypes.string,

@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
 
 export const Button = styled.button`
 	margin: 0;
-	border: 1px solid #00aadc;
+	border: 1px solid #DA8320;
 	text-decoration: none;
 	display: flex;
 	justify-content: center;
@@ -18,7 +18,7 @@ export const Button = styled.button`
 	padding: .625rem .75rem;
 	background-color: ${({visible}) => (visible ? '#e5f6fb' : '#fff')};
 	outline: none;
-	color: #00aadc;
+	color: #DA8320;
 	font-size: .875rem;
 	transition: background-color .2s ease-in-out;
 	position: relative;

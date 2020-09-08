@@ -3,7 +3,7 @@ import {ShareButton, SocialList} from 'react-share';
 
 const App = () => (
 	<div className="wrapper">
-		<ShareButton/>
+		<ShareButton copyTitle='Копировать ссылку'/>
 		<SocialList/>
 	</div>
 );

@@ -3,6 +3,7 @@ import {useState, useEffect, useRef} from 'react';
 const useShareButton = callback => {
 	const [enabled, setEnabled] = useState(false);
 	const [visible, setVisible] = useState(false);
+	const [copyLink, setCopyLink] = useState('');
 	const ref = useRef(null);
 
 	const toggleVisible = () => {
@@ -20,7 +21,15 @@ const useShareButton = callback => {
 		}
 	};
 
+	const handleCopyLink = () => {
+		navigator.clipboard.writeText(`${copyLink}`);
+		setVisible(false);
+	};
+
 	useEffect(() => {
+		const url = document.location.href;
+
+		setCopyLink(url);
 		document.addEventListener('click', handleClickOutside, true);
 
 		return () => document.removeEventListener('click', handleClickOutside, true);
@@ -30,7 +39,8 @@ const useShareButton = callback => {
 		ref,
 		enabled,
 		visible,
-		toggleVisible
+		toggleVisible,
+		handleCopyLink
 	};
 };
 
