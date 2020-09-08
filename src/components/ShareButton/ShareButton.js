@@ -34,7 +34,7 @@ const ShareButton = ({
 						<SocialList
 							toCount={toCount}
 							list={list}
-							url={defaultUrl}
+							defaultUrl={defaultUrl}
 						/>
 						<CopyLinkButton copyTitle={copyTitle} handleCopyLink={handleCopyLink}/>
 					</Tooltip>
