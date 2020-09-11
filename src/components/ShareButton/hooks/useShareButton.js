@@ -1,6 +1,6 @@
 import {useState, useEffect, useRef} from 'react';
 
-const useShareButton = callback => {
+const useShareButton = (callback, defaultUrl) => {
 	const [enabled, setEnabled] = useState(false);
 	const [visible, setVisible] = useState(false);
 	const [copyLink, setCopyLink] = useState('');
@@ -16,7 +16,7 @@ const useShareButton = callback => {
 			setVisible(false);
 		}
 
-		if (callback) {
+		else if (callback) {
 			callback();
 		}
 	};
@@ -27,7 +27,7 @@ const useShareButton = callback => {
 	};
 
 	useEffect(() => {
-		const url = document.location.href;
+		const url = defaultUrl || document.location.href;
 
 		setCopyLink(url);
 		document.addEventListener('click', handleClickOutside, true);

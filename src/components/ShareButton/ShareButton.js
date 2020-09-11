@@ -15,7 +15,7 @@ const ShareButton = ({
 }) => {
 	const {
 		ref, enabled, visible, toggleVisible, handleCopyLink
-	} = useShareButton(callback);
+	} = useShareButton(callback, defaultUrl);
 
 	return (
 		<Wrapper ref={ref} className={className} style={style}>
@@ -36,7 +36,7 @@ const ShareButton = ({
 							list={list}
 							defaultUrl={defaultUrl}
 						/>
-						<CopyLinkButton copyTitle={copyTitle} handleCopyLink={handleCopyLink}/>
+						<CopyLinkButton copyTitle={copyTitle} handleCopyLink={handleCopyLink} defaultUrl={defaultUrl}/>
 					</Tooltip>
 				)
 			}
