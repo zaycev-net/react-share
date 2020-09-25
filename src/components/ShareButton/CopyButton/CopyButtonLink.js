@@ -8,7 +8,7 @@ const CopyLinkButton = ({copyTitle, handleCopyLink}) => (
 		<Info>
 			{renderIcon('copylink')}
 			<TextInfo>
-				{copyTitle}
+				{copyTitle || 'Копировать ссылку'}
 			</TextInfo>
 		</Info>
 	</Root>
