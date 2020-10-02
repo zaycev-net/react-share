@@ -4,7 +4,7 @@ import {Root, Info, TextInfo} from './CopyButtonLink.styled';
 import renderIcon from '../../../utils/renderIcon';
 
 const CopyLinkButton = ({copyTitle, handleCopyLink}) => (
-	<Root onClick={handleCopyLink}>
+	<Root onClick={handleCopyLink} data-qa="share-copy">
 		<Info>
 			{renderIcon('copylink')}
 			<TextInfo>

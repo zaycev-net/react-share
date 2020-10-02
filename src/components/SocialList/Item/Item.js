@@ -12,7 +12,7 @@ const SocialListItem = ({
 	const {clickHandler} = useSocialListItem(name, url);
 
 	return (
-		<Root name={name}>
+		<Root name={name} data-qa={`share-${name}`}>
 			<a
 				href={url}
 				target="_blank"
