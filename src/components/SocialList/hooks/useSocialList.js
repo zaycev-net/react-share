@@ -21,21 +21,21 @@ const useSocialList = (list, toCount, defaultUrl) => {
 		setCountList(list);
 
 		const newList = await Promise.all(list.map(async ({name, textButton, utm}) => {
-			const url = socialUrl(utm ? url + utm : url)[name];
+			const urlItem = socialUrl(utm ? url + utm : url)[name];
 
 			if (name === 'copy') {
 				return {
 					name,
 					textButton,
-					url
-				}
+					url: urlItem
+				};
 			}
 			return {
 				name,
 				textButton,
-				url,
+				url: urlItem,
 				count: toCount ? await request(name, url) : null
-			}
+			};
 		}));
 
 		setCountList(newList);
@@ -44,7 +44,7 @@ const useSocialList = (list, toCount, defaultUrl) => {
 	useEffect(() => {
 		const url = defaultUrl || document.location.href;
 
-		void requestCount(url);
+		requestCount(url);
 	}, [defaultUrl, list, requestCount]);
 
 	return {

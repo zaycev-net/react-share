@@ -1,4 +1,6 @@
-import {useState, useEffect, useRef} from 'react';
+import {
+	useState, useEffect, useRef, useCallback
+} from 'react';
 
 const useShareButton = (callback, defaultUrl) => {
 	const [enabled, setEnabled] = useState(false);
@@ -11,15 +13,13 @@ const useShareButton = (callback, defaultUrl) => {
 		setVisible(prev => !prev);
 	};
 
-	const handleClickOutside = event => {
+	const handleClickOutside = useCallback(event => {
 		if (ref.current && !ref.current.contains(event.target)) {
 			setVisible(false);
-		}
-
-		else if (callback) {
+		} else if (callback) {
 			callback();
 		}
-	};
+	}, [callback]);
 
 	const handleCopyLink = () => {
 		navigator.clipboard.writeText(`${copyLink}`);
@@ -33,7 +33,7 @@ const useShareButton = (callback, defaultUrl) => {
 		document.addEventListener('click', handleClickOutside, true);
 
 		return () => document.removeEventListener('click', handleClickOutside, true);
-	}, []);
+	}, [defaultUrl, handleClickOutside]);
 
 	return {
 		ref,

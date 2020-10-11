@@ -6,7 +6,7 @@ import Item from './Item/Item';
 import useSocialList from './hooks/useSocialList';
 
 import Root from './SocialList.styled';
-import CopyLinkButton from "../ShareButton/CopyButton/CopyButtonLink";
+import CopyLinkButton from '../ShareButton/CopyButton/CopyButtonLink';
 
 const SocialList = ({
 	style, className, list, toCount, defaultUrl, handleCopyLink
@@ -18,7 +18,7 @@ const SocialList = ({
 			{
 				countList.map(item => {
 					if (item.name === 'copy') {
-						return <CopyLinkButton copyTitle={item.textButton} handleCopyLink={handleCopyLink} defaultUrl={defaultUrl} />
+						return <CopyLinkButton key={item.name} copyTitle={item.textButton} handleCopyLink={handleCopyLink} defaultUrl={defaultUrl} />;
 					}
 
 					return (
@@ -27,7 +27,7 @@ const SocialList = ({
 							{...item}
 							toCount={toCount}
 						/>
-					)
+					);
 				})
 			}
 		</Root>

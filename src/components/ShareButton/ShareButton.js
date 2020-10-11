@@ -95,7 +95,7 @@ ShareButton.defaultProps = {
 			name: 'copy',
 			textButton: 'Копировать ссылку',
 			utm: 'copy'
-		},
+		}
 	]
 };
 
