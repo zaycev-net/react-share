@@ -53,7 +53,10 @@ const Example = () => {
         {
             name: 'copy',
             extButton: 'Copy link',
-            utm: '?utm' //optional
+            utm: '?utm', //optional
+            onClick: () => {
+            	console.log('Link copied')
+            } //optional
         }
     ];
  
@@ -68,6 +71,7 @@ const Example = () => {
                 toCount={true}
                 list={list}
                 defaultUrl="https://zaycev.net"
+                callback={() => console.log('Share click')}
             />
             <SocialList
                 style={{

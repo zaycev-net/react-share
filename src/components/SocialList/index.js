@@ -1,21 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import listType from '../types';
+
 import Item from './Item';
 import CopyLinkButton from '../ShareButton/CopyButton';
 
 import useSocialList from './hooks/useSocialList';
 
 import Root from './styled.index';
+import { listDefaultProps, toCountDefaultProps } from '../configs';
 
-const SocialList = ({ style, className, list, toCount, defaultUrl, handleCopyLink }) => {
+const SocialList = ({ style, className, list, toCount, defaultUrl }) => {
 	const { countList } = useSocialList(list, toCount, defaultUrl);
 
 	return (
 		<Root style={style} className={className}>
 			{countList.map((item) => {
 				if (item.name === 'copy') {
-					return <CopyLinkButton key={item.name} copyTitle={item.textButton} handleCopyLink={handleCopyLink} defaultUrl={defaultUrl} />;
+					return <CopyLinkButton key={item.name} {...item} />;
 				}
 
 				return <Item key={item.name} {...item} toCount={toCount} />;
@@ -29,55 +32,12 @@ SocialList.propTypes = {
 	className: PropTypes.string,
 	style: PropTypes.objectOf(PropTypes.string),
 	toCount: PropTypes.bool,
-	handleCopyLink: PropTypes.func,
-	list: PropTypes.arrayOf(
-		PropTypes.exact({
-			name: PropTypes.oneOf(['vk', 'mail', 'ok', 'facebook', 'twitter', 'telegram', 'copy']),
-			textButton: PropTypes.string,
-			utm: PropTypes.string
-		})
-	)
+	list: listType
 };
 
 SocialList.defaultProps = {
-	toCount: true,
-	list: [
-		{
-			name: 'vk',
-			textButton: 'Вконтакте',
-			utm: 'vk'
-		},
-		{
-			name: 'mail',
-			textButton: 'Мой мир',
-			utm: 'mail'
-		},
-		{
-			name: 'ok',
-			textButton: 'Одноклассники',
-			utm: 'ok'
-		},
-		{
-			name: 'facebook',
-			textButton: 'Facebook',
-			utm: 'facebook'
-		},
-		{
-			name: 'twitter',
-			textButton: 'Twitter',
-			utm: 'twitter'
-		},
-		{
-			name: 'telegram',
-			textButton: 'Telegram',
-			utm: 'telegram'
-		},
-		{
-			name: 'copy',
-			textButton: 'Копировать ссылку',
-			utm: 'copy'
-		}
-	]
+	toCount: toCountDefaultProps,
+	list: listDefaultProps
 };
 
 export default SocialList;
