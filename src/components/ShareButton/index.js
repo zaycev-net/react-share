@@ -7,38 +7,22 @@ import ShareIcon from '../../assets/share-icon.svg';
 
 import useShareButton from './hooks/useShareButton';
 
-import {Wrapper, Button, Tooltip} from './styled.index';
+import { Wrapper, Button, Tooltip } from './styled.index';
 
-const ShareButton = ({
-	title, style, className, toCount, list, defaultUrl, callback
-}) => {
-	const {
-		ref, enabled, visible, toggleVisible, handleCopyLink
-	} = useShareButton(callback, defaultUrl);
+const ShareButton = ({ title, style, className, toCount, list, defaultUrl, callback }) => {
+	const { ref, enabled, visible, toggleVisible, handleCopyLink } = useShareButton(callback, defaultUrl);
 
 	return (
 		<Wrapper ref={ref} className={className} style={style}>
-			<Button
-				title={title}
-				visible={visible}
-				onClick={toggleVisible}
-			>
-				<ShareIcon/>
+			<Button title={title} visible={visible} onClick={toggleVisible}>
+				<ShareIcon />
 				{title}
 			</Button>
-			{
-				enabled
-				&& (
-					<Tooltip visible={visible}>
-						<SocialList
-							toCount={toCount}
-							list={list}
-							defaultUrl={defaultUrl}
-							handleCopyLink={handleCopyLink}
-						/>
-					</Tooltip>
-				)
-			}
+			{enabled && (
+				<Tooltip visible={visible}>
+					<SocialList toCount={toCount} list={list} defaultUrl={defaultUrl} handleCopyLink={handleCopyLink} />
+				</Tooltip>
+			)}
 		</Wrapper>
 	);
 };
@@ -48,11 +32,13 @@ ShareButton.propTypes = {
 	className: PropTypes.string,
 	style: PropTypes.objectOf(PropTypes.string),
 	toCount: PropTypes.bool,
-	list: PropTypes.arrayOf(PropTypes.exact({
-		name: PropTypes.oneOf(['vk', 'mail', 'ok', 'facebook', 'twitter', 'telegram', 'copy']),
-		textButton: PropTypes.string,
-		utm: PropTypes.string
-	})),
+	list: PropTypes.arrayOf(
+		PropTypes.exact({
+			name: PropTypes.oneOf(['vk', 'mail', 'ok', 'facebook', 'twitter', 'telegram', 'copy']),
+			textButton: PropTypes.string,
+			utm: PropTypes.string
+		})
+	),
 	defaultUrl: PropTypes.string,
 	callback: PropTypes.func
 };

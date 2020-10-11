@@ -5,34 +5,19 @@ import useSocialListItem from './hooks/useSocialListItem';
 
 import renderIcon from '../../../utils/renderIcon';
 
-import {Root, Info, Count} from './styled.index';
+import { Root, Info, Count } from './styled.index';
 
-const SocialListItem = ({
-	name, textButton, count, toCount, url
-}) => {
-	const {clickHandler} = useSocialListItem(name, url);
+const SocialListItem = ({ name, textButton, count, toCount, url }) => {
+	const { clickHandler } = useSocialListItem(name, url);
 
 	return (
 		<Root name={name} data-qa={`share-${name}`}>
-			<a
-				href={url}
-				target="_blank"
-				rel="noopener noreferrer"
-				title={textButton}
-				onClick={clickHandler}
-			>
+			<a href={url} target="_blank" rel="noopener noreferrer" title={textButton} onClick={clickHandler}>
 				<Info>
 					{renderIcon(name)}
 					{textButton}
 				</Info>
-				{
-					toCount
-					&& (
-						<Count>
-							{count > 999 ? `${(count / 1000).toFixed()}K` : count}
-						</Count>
-					)
-				}
+				{toCount && <Count>{count > 999 ? `${(count / 1000).toFixed()}K` : count}</Count>}
 			</a>
 		</Root>
 	);

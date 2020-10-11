@@ -1,5 +1,5 @@
 const useSocialListItem = (name, url) => {
-	const clickHandler = e => {
+	const clickHandler = (e) => {
 		e.preventDefault();
 
 		window.open(url, '', 'width=650, height=570');
