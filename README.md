@@ -49,6 +49,11 @@ const Example = () => {
             name: 'telegram',
             extButton: 'Telegram',
             utm: '?utm' //optional
+        },
+        {
+            name: 'copy',
+            extButton: 'Copy link',
+            utm: '?utm' //optional
         }
     ];
  

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import SocialList from '../SocialList/SocialList';
-import CopyLinkButton from './CopyButton/CopyButtonLink';
 
 import ShareIcon from '../../assets/share-icon.svg';
 
@@ -11,7 +10,7 @@ import useShareButton from './hooks/useShareButton';
 import {Wrapper, Button, Tooltip} from './ShareButton.styled';
 
 const ShareButton = ({
-	title, style, className, toCount, list, defaultUrl, callback, copyTitle
+	title, style, className, toCount, list, defaultUrl, callback
 }) => {
 	const {
 		ref, enabled, visible, toggleVisible, handleCopyLink
@@ -35,8 +34,8 @@ const ShareButton = ({
 							toCount={toCount}
 							list={list}
 							defaultUrl={defaultUrl}
+							handleCopyLink={handleCopyLink}
 						/>
-						<CopyLinkButton copyTitle={copyTitle} handleCopyLink={handleCopyLink} defaultUrl={defaultUrl}/>
 					</Tooltip>
 				)
 			}
@@ -49,9 +48,8 @@ ShareButton.propTypes = {
 	className: PropTypes.string,
 	style: PropTypes.objectOf(PropTypes.string),
 	toCount: PropTypes.bool,
-	copyTitle: PropTypes.string,
 	list: PropTypes.arrayOf(PropTypes.exact({
-		name: PropTypes.oneOf(['vk', 'mail', 'ok', 'facebook', 'twitter', 'telegram']),
+		name: PropTypes.oneOf(['vk', 'mail', 'ok', 'facebook', 'twitter', 'telegram', 'copy']),
 		textButton: PropTypes.string,
 		utm: PropTypes.string
 	})),
@@ -92,7 +90,12 @@ ShareButton.defaultProps = {
 			name: 'telegram',
 			textButton: 'Telegram',
 			utm: 'telegram'
-		}
+		},
+		{
+			name: 'copy',
+			textButton: 'Копировать ссылку',
+			utm: 'copy'
+		},
 	]
 };
 
