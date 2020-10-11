@@ -8,28 +8,18 @@ import useSocialList from './hooks/useSocialList';
 
 import Root from './styled.index';
 
-const SocialList = ({
-	style, className, list, toCount, defaultUrl, handleCopyLink
-}) => {
-	const {countList} = useSocialList(list, toCount, defaultUrl);
+const SocialList = ({ style, className, list, toCount, defaultUrl, handleCopyLink }) => {
+	const { countList } = useSocialList(list, toCount, defaultUrl);
 
 	return (
 		<Root style={style} className={className}>
-			{
-				countList.map(item => {
-					if (item.name === 'copy') {
-						return <CopyLinkButton key={item.name} copyTitle={item.textButton} handleCopyLink={handleCopyLink} defaultUrl={defaultUrl} />;
-					}
+			{countList.map((item) => {
+				if (item.name === 'copy') {
+					return <CopyLinkButton key={item.name} copyTitle={item.textButton} handleCopyLink={handleCopyLink} defaultUrl={defaultUrl} />;
+				}
 
-					return (
-						<Item
-							key={item.name}
-							{...item}
-							toCount={toCount}
-						/>
-					);
-				})
-			}
+				return <Item key={item.name} {...item} toCount={toCount} />;
+			})}
 		</Root>
 	);
 };
@@ -40,11 +30,13 @@ SocialList.propTypes = {
 	style: PropTypes.objectOf(PropTypes.string),
 	toCount: PropTypes.bool,
 	handleCopyLink: PropTypes.func,
-	list: PropTypes.arrayOf(PropTypes.exact({
-		name: PropTypes.oneOf(['vk', 'mail', 'ok', 'facebook', 'twitter', 'telegram', 'copy']),
-		textButton: PropTypes.string,
-		utm: PropTypes.string
-	}))
+	list: PropTypes.arrayOf(
+		PropTypes.exact({
+			name: PropTypes.oneOf(['vk', 'mail', 'ok', 'facebook', 'twitter', 'telegram', 'copy']),
+			textButton: PropTypes.string,
+			utm: PropTypes.string
+		})
+	)
 };
 
 SocialList.defaultProps = {

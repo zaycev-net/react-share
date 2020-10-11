@@ -5,7 +5,7 @@ const Root = styled.ul`
 	flex-direction: column;
 	width: 100%;
 	padding: 0;
-	font-size: .875rem;
+	font-size: 0.875rem;
 	list-style: none;
 	margin: 0;
 	font-weight: normal;

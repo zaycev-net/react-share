@@ -1,16 +1,47 @@
 {
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+  },
   "extends": [
-    "graph"
+    "graph",
+    "prettier",
+    "plugin:prettier/recommended"
   ],
   "parser": "babel-eslint",
   "env": {
-    "jest": true
+    "jest": true,
+    "es6": true,
+    "browser": true,
+    "node": true
   },
-  "plugins": ["promise"],
+  "plugins": [
+    "promise",
+    "prettier"
+  ],
+  "globals": {
+    "render": false,
+    "shallow": false,
+    "mount": false
+  },
   "rules": {
+    "react/no-unsafe": [
+      2,
+      {
+        "checkAliases": true
+      }
+    ],
+    "prettier/prettier": "error",
+    "max-len": [
+      "error",
+      150
+    ],
+    "react/jsx-props-no-spreading": "off",
     "promise/prefer-await-to-then": "error",
-    "no-shadow": ["off"],
-    "no-console": "off",
+    "no-shadow": [
+      "off"
+    ],
     "import/no-extraneous-dependencies": [
       "error",
       {
