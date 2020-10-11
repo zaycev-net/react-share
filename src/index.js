@@ -1,5 +1,5 @@
-import ShareButton from './components/ShareButton/ShareButton';
-import SocialList from './components/SocialList/SocialList';
+import ShareButton from './components/ShareButton';
+import SocialList from './components/SocialList';
 
 export {
 	ShareButton,

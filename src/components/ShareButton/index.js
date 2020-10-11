@@ -1,53 +1,64 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Item from './Item/Item';
+import SocialList from '../SocialList';
 
-import useSocialList from './hooks/useSocialList';
+import ShareIcon from '../../assets/share-icon.svg';
 
-import Root from './SocialList.styled';
-import CopyLinkButton from '../ShareButton/CopyButton/CopyButtonLink';
+import useShareButton from './hooks/useShareButton';
 
-const SocialList = ({
-	style, className, list, toCount, defaultUrl, handleCopyLink
+import {Wrapper, Button, Tooltip} from './styled.index';
+
+const ShareButton = ({
+	title, style, className, toCount, list, defaultUrl, callback
 }) => {
-	const {countList} = useSocialList(list, toCount, defaultUrl);
+	const {
+		ref, enabled, visible, toggleVisible, handleCopyLink
+	} = useShareButton(callback, defaultUrl);
 
 	return (
-		<Root style={style} className={className}>
+		<Wrapper ref={ref} className={className} style={style}>
+			<Button
+				title={title}
+				visible={visible}
+				onClick={toggleVisible}
+			>
+				<ShareIcon/>
+				{title}
+			</Button>
 			{
-				countList.map(item => {
-					if (item.name === 'copy') {
-						return <CopyLinkButton key={item.name} copyTitle={item.textButton} handleCopyLink={handleCopyLink} defaultUrl={defaultUrl} />;
-					}
-
-					return (
-						<Item
-							key={item.name}
-							{...item}
+				enabled
+				&& (
+					<Tooltip visible={visible}>
+						<SocialList
 							toCount={toCount}
+							list={list}
+							defaultUrl={defaultUrl}
+							handleCopyLink={handleCopyLink}
 						/>
-					);
-				})
+					</Tooltip>
+				)
 			}
-		</Root>
+		</Wrapper>
 	);
 };
 
-SocialList.propTypes = {
-	defaultUrl: PropTypes.string,
+ShareButton.propTypes = {
+	title: PropTypes.string,
 	className: PropTypes.string,
 	style: PropTypes.objectOf(PropTypes.string),
 	toCount: PropTypes.bool,
-	handleCopyLink: PropTypes.func,
 	list: PropTypes.arrayOf(PropTypes.exact({
 		name: PropTypes.oneOf(['vk', 'mail', 'ok', 'facebook', 'twitter', 'telegram', 'copy']),
 		textButton: PropTypes.string,
 		utm: PropTypes.string
-	}))
+	})),
+	defaultUrl: PropTypes.string,
+	callback: PropTypes.func
 };
 
-SocialList.defaultProps = {
+ShareButton.defaultProps = {
+	title: 'Поделиться',
 	toCount: true,
 	list: [
 		{
@@ -88,4 +99,4 @@ SocialList.defaultProps = {
 	]
 };
 
-export default SocialList;
+export default ShareButton;
