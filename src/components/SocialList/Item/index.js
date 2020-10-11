@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import useSocialListItem from './hooks/useSocialListItem';
+
 import renderIcon from '../../../utils/renderIcon';
 
-import {Root, Info, Count} from './Item.styled';
-import useSocialListItem from './hooks/useSocialListItem';
+import {Root, Info, Count} from './styled.index';
 
 const SocialListItem = ({
 	name, textButton, count, toCount, url

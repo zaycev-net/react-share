@@ -22,7 +22,7 @@ const renderIcon = name => {
 			return <Twitter/>;
 		case 'telegram':
 			return <Telegram/>;
-		case 'copylink':
+		case 'copyLink':
 			return <CopyLink/>;
 	}
 };
