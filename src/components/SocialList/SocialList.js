@@ -6,22 +6,29 @@ import Item from './Item/Item';
 import useSocialList from './hooks/useSocialList';
 
 import Root from './SocialList.styled';
+import CopyLinkButton from '../ShareButton/CopyButton/CopyButtonLink';
 
 const SocialList = ({
-	style, className, list, toCount, defaultUrl
+	style, className, list, toCount, defaultUrl, handleCopyLink
 }) => {
 	const {countList} = useSocialList(list, toCount, defaultUrl);
 
 	return (
 		<Root style={style} className={className}>
 			{
-				countList.map(item => (
-					<Item
-						key={item.name}
-						{...item}
-						toCount={toCount}
-					/>
-				))
+				countList.map(item => {
+					if (item.name === 'copy') {
+						return <CopyLinkButton key={item.name} copyTitle={item.textButton} handleCopyLink={handleCopyLink} defaultUrl={defaultUrl} />;
+					}
+
+					return (
+						<Item
+							key={item.name}
+							{...item}
+							toCount={toCount}
+						/>
+					);
+				})
 			}
 		</Root>
 	);
@@ -32,8 +39,9 @@ SocialList.propTypes = {
 	className: PropTypes.string,
 	style: PropTypes.objectOf(PropTypes.string),
 	toCount: PropTypes.bool,
+	handleCopyLink: PropTypes.func,
 	list: PropTypes.arrayOf(PropTypes.exact({
-		name: PropTypes.oneOf(['vk', 'mail', 'ok', 'facebook', 'twitter', 'telegram']),
+		name: PropTypes.oneOf(['vk', 'mail', 'ok', 'facebook', 'twitter', 'telegram', 'copy']),
 		textButton: PropTypes.string,
 		utm: PropTypes.string
 	}))
@@ -71,6 +79,11 @@ SocialList.defaultProps = {
 			name: 'telegram',
 			textButton: 'Telegram',
 			utm: 'telegram'
+		},
+		{
+			name: 'copy',
+			textButton: 'Копировать ссылку',
+			utm: 'copy'
 		}
 	]
 };

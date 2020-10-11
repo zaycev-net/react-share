@@ -20,24 +20,25 @@ const useSocialList = (list, toCount, defaultUrl) => {
 	const requestCount = useCallback(async url => {
 		setCountList(list);
 
-		if (toCount) {
-			const newList = await Promise.all(list.map(async ({name, textButton, utm}) => ({
+		const newList = await Promise.all(list.map(async ({name, textButton, utm}) => {
+			const urlItem = socialUrl(utm ? url + utm : url)[name];
+
+			if (name === 'copy') {
+				return {
+					name,
+					textButton,
+					url: urlItem
+				};
+			}
+			return {
 				name,
 				textButton,
-				url: socialUrl(utm ? url + utm : url)[name],
-				count: await request(name, url)
-			})));
+				url: urlItem,
+				count: toCount ? await request(name, url) : null
+			};
+		}));
 
-			setCountList(newList);
-		} else {
-			const newList = list.map(({name, textButton, utm}) => ({
-				name,
-				textButton,
-				url: socialUrl(utm ? url + utm : url)[name]
-			}));
-
-			setCountList(newList);
-		}
+		setCountList(newList);
 	}, [list, toCount]);
 
 	useEffect(() => {
