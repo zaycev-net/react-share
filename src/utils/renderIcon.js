@@ -8,22 +8,22 @@ import Twitter from '../assets/social/twitter.svg';
 import Telegram from '../assets/social/telegram.svg';
 import CopyLink from '../assets/copylink.svg';
 
-const renderIcon = name => {
+const renderIcon = (name) => {
 	switch (name) {
 		case 'vk':
-			return <VK/>;
+			return <VK />;
 		case 'mail':
-			return <Mail/>;
+			return <Mail />;
 		case 'ok':
-			return <OK/>;
+			return <OK />;
 		case 'facebook':
-			return <Facebook/>;
+			return <Facebook />;
 		case 'twitter':
-			return <Twitter/>;
+			return <Twitter />;
 		case 'telegram':
-			return <Telegram/>;
-		case 'copylink':
-			return <CopyLink/>;
+			return <Telegram />;
+		case 'copyLink':
+			return <CopyLink />;
 	}
 };
 
