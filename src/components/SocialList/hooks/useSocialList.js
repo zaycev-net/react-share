@@ -32,12 +32,12 @@ const useSocialList = (list, toCount, defaultUrl) => {
 						return {
 							name,
 							textButton,
-							onClick: async (e) => {
-								await navigator.clipboard.writeText(`${copyLink}`);
-
-								if (onClick) {
-									onClick(e);
-								}
+							onClick: (e) => {
+								navigator?.clipboard?.writeText(`${copyLink}`).then(() => {
+									if (onClick) {
+										onClick(e);
+									}
+								});
 							}
 						};
 					}
