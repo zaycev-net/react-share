@@ -5,6 +5,8 @@ import { socialUrl, requestUrl } from '../../../utils/urlList';
 
 const useSocialList = (list, toCount, defaultUrl) => {
 	const [countList, setCountList] = useState([]);
+	const [copyLink, setCopyLink] = useState('');
+
 	const request = async (name, url) => {
 		try {
 			if (name !== 'telegram') {
@@ -14,6 +16,7 @@ const useSocialList = (list, toCount, defaultUrl) => {
 				return Number(count);
 			}
 		} catch (e) {
+			// eslint-disable-next-line no-console
 			console.error(e);
 		}
 	};
@@ -22,35 +25,44 @@ const useSocialList = (list, toCount, defaultUrl) => {
 			setCountList(list);
 
 			const newList = await Promise.all(
-				list.map(async ({ name, textButton, utm }) => {
+				list.map(async ({ name, textButton, utm, onClick }) => {
 					const urlItem = socialUrl(utm ? url + utm : url)[name];
 
 					if (name === 'copy') {
 						return {
 							name,
 							textButton,
-							url: urlItem
+							onClick: async (e) => {
+								await navigator.clipboard.writeText(`${copyLink}`);
+
+								if (onClick) {
+									onClick(e);
+								}
+							}
 						};
 					}
+
 					return {
 						name,
 						textButton,
 						url: urlItem,
-						count: toCount ? await request(name, url) : null
+						count: toCount ? await request(name, url) : null,
+						onClick
 					};
 				})
 			);
 
 			setCountList(newList);
 		},
-		[list, toCount]
+		[copyLink, list, toCount]
 	);
 
 	useEffect(() => {
 		const url = defaultUrl || document.location.href;
 
+		setCopyLink(url);
 		requestCount(url);
-	}, [defaultUrl, list, requestCount]);
+	}, [defaultUrl, list, requestCount, setCopyLink]);
 
 	return {
 		countList
