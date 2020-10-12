@@ -8,8 +8,9 @@ import CopyLinkButton from '../ShareButton/CopyButton';
 
 import useSocialList from './hooks/useSocialList';
 
-import Root from './styled.index';
 import { listDefaultProps, toCountDefaultProps } from '../configs';
+
+import Root from './styled.index';
 
 const SocialList = ({ style, className, list, toCount, defaultUrl }) => {
 	const { countList } = useSocialList(list, toCount, defaultUrl);
