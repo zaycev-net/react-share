@@ -44,10 +44,22 @@ const App = () => {
 		}
 	];
 
+	const listSubscribe = [
+		{
+			name: 'vk',
+			textButton: 'Вконтакте',
+		},
+		{
+			name: 'telegram',
+			textButton: 'Telegram',
+		},
+	]
+
 	return (
 		<div className="wrapper">
 			{/* eslint-disable-next-line no-console */}
 			<ShareButton callback={() => console.log('Share click')} list={list} />
+			<ShareButton callback={() => console.log('Share click')} list={listSubscribe} isSubscribe trackId={2167056}/>
 			<SocialList list={list} />
 		</div>
 	);

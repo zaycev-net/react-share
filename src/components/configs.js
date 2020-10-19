@@ -37,3 +37,18 @@ export const listDefaultProps = [
 ];
 
 export const toCountDefaultProps = false;
+
+export const listDefaultPropsSubscribe = [
+	{
+		name: 'vk',
+		textButton: 'Вконтакте',
+	},
+	{
+		name: 'telegram',
+		textButton: 'Telegram',
+	},
+	{
+		name: 'viber',
+		textButton: 'Viber',
+	},
+]

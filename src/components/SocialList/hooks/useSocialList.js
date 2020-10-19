@@ -1,11 +1,14 @@
 import axios from 'axios';
 import { useState, useEffect, useCallback } from 'react';
 
-import { socialUrl, requestUrl } from '../../../utils/urlList';
+import { socialUrl, requestUrl, subscribeUrl } from '../../../utils/urlList';
 
-const useSocialList = (list, toCount, defaultUrl) => {
+// import VK from '../../../utils/vkApi';
+
+const useSocialList = (list, toCount, defaultUrl, isSubscribe, trackId) => {
 	const [countList, setCountList] = useState([]);
 	const [copyLink, setCopyLink] = useState('');
+	const VK = window.VK;
 
 	const request = async (name, url) => {
 		try {
@@ -26,35 +29,67 @@ const useSocialList = (list, toCount, defaultUrl) => {
 
 			const newList = await Promise.all(
 				list.map(async ({ name, textButton, utm, onClick }) => {
-					const urlItem = socialUrl(utm ? url + utm : url)[name];
+					if(isSubscribe) {
+						const urlItem = subscribeUrl(trackId)[name];
 
-					if (name === 'copy') {
+						if(name === 'vk') {
+							return {
+								name,
+								textButton,
+								onClick: async (e) => {
+									try {
+										const api = await VK.Widgets.AllowMessagesFromCommunity("vk_allow_messages_from_community", {}, 34001496);
+										console.log(api)
+
+										if (onClick) {
+											onClick(e, 'success');
+										}
+									} catch (e) {
+										if (onClick) {
+											onClick(e, 'error');
+										}
+									}
+								}
+							};
+						}
+
 						return {
 							name,
 							textButton,
-							onClick: async (e) => {
-								try {
-									await navigator.clipboard.writeText(`${copyLink}`);
+							url: urlItem,
+							onClick
+						}
+					} else {
+						const urlItem = socialUrl(utm ? url + utm : url)[name];
 
-									if (onClick) {
-										onClick(e, 'success');
-									}
-								} catch (e) {
-									if (onClick) {
-										onClick(e, 'error');
+						if (name === 'copy') {
+							return {
+								name,
+								textButton,
+								onClick: async (e) => {
+									try {
+										await navigator.clipboard.writeText(`${copyLink}`);
+
+										if (onClick) {
+											onClick(e, 'success');
+										}
+									} catch (e) {
+										if (onClick) {
+											onClick(e, 'error');
+										}
 									}
 								}
-							}
+							};
+						}
+
+						return {
+							name,
+							textButton,
+							url: urlItem,
+							count: toCount ? await request(name, url) : null,
+							onClick
 						};
 					}
-
-					return {
-						name,
-						textButton,
-						url: urlItem,
-						count: toCount ? await request(name, url) : null,
-						onClick
-					};
 				})
 			);
 

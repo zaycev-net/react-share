@@ -14,3 +14,7 @@ export const socialUrl = (url) => ({
 	twitter: `https://twitter.com/intent/tweet?url=${url}`,
 	telegram: `https://t.me/share/url?url=${url}`
 });
+
+export const subscribeUrl = (trackId) => ({
+	telegram: `https://t.me/zaycevnetbot?start=trackId${trackId}`
+})

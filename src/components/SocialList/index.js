@@ -12,8 +12,8 @@ import { listDefaultProps, toCountDefaultProps } from '../configs';
 
 import Root from './styled.index';
 
-const SocialList = ({ style, className, list, toCount, defaultUrl }) => {
-	const { countList } = useSocialList(list, toCount, defaultUrl);
+const SocialList = ({ style, className, list, toCount, defaultUrl, trackId, isSubscribe }) => {
+	const { countList } = useSocialList(list, toCount, defaultUrl, trackId, isSubscribe);
 
 	return (
 		<Root style={style} className={className}>
@@ -22,7 +22,7 @@ const SocialList = ({ style, className, list, toCount, defaultUrl }) => {
 					return <CopyLinkButton key={item.name} {...item} />;
 				}
 
-				return <Item key={item.name} {...item} toCount={toCount} />;
+				return <Item key={item.name} {...item} toCount={toCount} isSubscribe/>;
 			})}
 		</Root>
 	);
@@ -33,7 +33,9 @@ SocialList.propTypes = {
 	className: PropTypes.string,
 	style: PropTypes.objectOf(PropTypes.string),
 	toCount: PropTypes.bool,
-	list: listType
+	list: listType,
+	trackId: PropTypes.number,
+	isSubscribe: PropTypes.bool
 };
 
 SocialList.defaultProps = {
