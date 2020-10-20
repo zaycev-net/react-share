@@ -3,12 +3,9 @@ import { useState, useEffect, useCallback } from 'react';
 
 import { socialUrl, requestUrl, subscribeUrl } from '../../../utils/urlList';
 
-// import VK from '../../../utils/vkApi';
-
-const useSocialList = (list, toCount, defaultUrl, isSubscribe, trackId) => {
+const useSocialList = (list, toCount, defaultUrl, trackId, isSubscribe, trackName) => {
 	const [countList, setCountList] = useState([]);
 	const [copyLink, setCopyLink] = useState('');
-	const VK = window.VK;
 
 	const request = async (name, url) => {
 		try {
@@ -30,28 +27,7 @@ const useSocialList = (list, toCount, defaultUrl, isSubscribe, trackId) => {
 			const newList = await Promise.all(
 				list.map(async ({ name, textButton, utm, onClick }) => {
 					if(isSubscribe) {
-						const urlItem = subscribeUrl(trackId)[name];
-
-						if(name === 'vk') {
-							return {
-								name,
-								textButton,
-								onClick: async (e) => {
-									try {
-										const api = await VK.Widgets.AllowMessagesFromCommunity("vk_allow_messages_from_community", {}, 34001496);
-										console.log(api)
-
-										if (onClick) {
-											onClick(e, 'success');
-										}
-									} catch (e) {
-										if (onClick) {
-											onClick(e, 'error');
-										}
-									}
-								}
-							};
-						}
+						const urlItem = subscribeUrl(trackId, trackName)[name];
 
 						return {
 							name,

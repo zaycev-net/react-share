@@ -12,8 +12,8 @@ import { listDefaultProps, toCountDefaultProps } from '../configs';
 
 import Root from './styled.index';
 
-const SocialList = ({ style, className, list, toCount, defaultUrl, trackId, isSubscribe }) => {
-	const { countList } = useSocialList(list, toCount, defaultUrl, trackId, isSubscribe);
+const SocialList = ({ style, className, list, toCount, defaultUrl, trackId, isSubscribe, trackName }) => {
+	const { countList } = useSocialList(list, toCount, defaultUrl, trackId, isSubscribe, trackName);
 
 	return (
 		<Root style={style} className={className}>

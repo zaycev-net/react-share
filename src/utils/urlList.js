@@ -15,6 +15,7 @@ export const socialUrl = (url) => ({
 	telegram: `https://t.me/share/url?url=${url}`
 });
 
-export const subscribeUrl = (trackId) => ({
-	telegram: `https://t.me/zaycevnetbot?start=trackId${trackId}`
+export const subscribeUrl = (trackId, trackName) => ({
+	telegram: `https://t.me/zaycevnetbot?start=trackId${trackId}`,
+	viber: `viber://pa?chatURI=zaycevnet&context=trackId${trackId}&text="Когда на Zaycev.net будет доступен трек ${trackName}?"`
 })

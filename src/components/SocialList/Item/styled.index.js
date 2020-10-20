@@ -6,7 +6,8 @@ const color = {
 	ok: '#f59310',
 	facebook: '#2851a3',
 	twitter: '#00b7ec',
-	telegram: '#039be5'
+	telegram: '#039be5',
+	viber: '#8f5db7'
 };
 
 export const Root = styled.li`

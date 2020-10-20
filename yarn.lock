@@ -9394,6 +9394,11 @@ react-scripts@^3.4.3:
   optionalDependencies:
     fsevents "2.1.2"
 
+react-vk@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/react-vk/-/react-vk-5.0.2.tgz#c590cebde365f66f154ec338fdd58cfd1d004ca6"
+  integrity sha512-fjlznPH3o4lsOyKUzOXyWmfIELtd/CR6ZOeJsOhIH3TMI/T7QH8acdEWJH9Bz2Ivd9pa/MN9WMr00G9F25TDUg==
+
 react@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
