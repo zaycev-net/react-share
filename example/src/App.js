@@ -48,10 +48,12 @@ const App = () => {
 		{
 			name: 'telegram',
 			textButton: 'Telegram',
+			defaultUrl: `https://t.me/zaycevnetbot?start=trackId2167056`
 		},
 		{
 			name: 'viber',
-			textButton: 'Viber'
+			textButton: 'Viber',
+			defaultUrl: `viber://pa?chatURI=zaycevnet&context=trackId2167056`
 		}
 	]
 
@@ -59,7 +61,7 @@ const App = () => {
 		<div className="wrapper">
 			{/* eslint-disable-next-line no-console */}
 			<ShareButton callback={() => console.log('Share click')} list={list} />
-			<ShareButton callback={() => console.log('Share click')} list={listSubscribe} isSubscribe trackId={2167056} trackName="TrackName" title='подписаться'/>
+			<ShareButton callback={() => console.log('Share click')} list={listSubscribe} isSubscribe title='Subscribe'/>
 			<SocialList list={list} />
 		</div>
 	);

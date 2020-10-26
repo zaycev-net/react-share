@@ -12,8 +12,8 @@ import { listDefaultProps, toCountDefaultProps } from '../configs';
 
 import Root from './styled.index';
 
-const SocialList = ({ style, className, list, toCount, defaultUrl, trackId, isSubscribe, trackName }) => {
-	const { countList } = useSocialList(list, toCount, defaultUrl, trackId, isSubscribe, trackName);
+const SocialList = ({ style, className, list, toCount, defaultUrl, isSubscribe }) => {
+	const { countList } = useSocialList(list, toCount, defaultUrl, isSubscribe);
 
 	return (
 		<Root style={style} className={className}>
@@ -34,7 +34,6 @@ SocialList.propTypes = {
 	style: PropTypes.objectOf(PropTypes.string),
 	toCount: PropTypes.bool,
 	list: listType,
-	trackId: PropTypes.number,
 	isSubscribe: PropTypes.bool
 };
 

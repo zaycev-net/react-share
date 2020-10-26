@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { useState, useEffect, useCallback } from 'react';
 
-import { socialUrl, requestUrl, subscribeUrl } from '../../../utils/urlList';
+import { socialUrl, requestUrl } from '../../../utils/urlList';
 
-const useSocialList = (list, toCount, defaultUrl, trackId, isSubscribe, trackName) => {
+const useSocialList = (list, toCount, defaultUrl, isSubscribe) => {
 	const [countList, setCountList] = useState([]);
 	const [copyLink, setCopyLink] = useState('');
 
@@ -25,14 +25,12 @@ const useSocialList = (list, toCount, defaultUrl, trackId, isSubscribe, trackNam
 			setCountList(list);
 
 			const newList = await Promise.all(
-				list.map(async ({ name, textButton, utm, onClick }) => {
+				list.map(async ({ name, textButton, utm, onClick, defaultUrl }) => {
 					if(isSubscribe) {
-						const urlItem = subscribeUrl(trackId, trackName)[name];
-
 						return {
 							name,
 							textButton,
-							url: urlItem,
+							url: defaultUrl,
 							onClick
 						}
 					} else {

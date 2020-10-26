@@ -12,7 +12,7 @@ import useShareButton from './hooks/useShareButton';
 import { Wrapper, Button, Tooltip } from './styled.index';
 import { listDefaultProps, toCountDefaultProps } from '../configs';
 
-const ShareButton = ({ title, style, className, toCount, list, defaultUrl, callback, trackId, isSubscribe, trackName }) => {
+const ShareButton = ({ title, style, className, toCount, list, defaultUrl, callback, isSubscribe }) => {
 	const { ref, enabled, visible, toggleVisible } = useShareButton(callback, defaultUrl);
 
 	return (
@@ -23,7 +23,7 @@ const ShareButton = ({ title, style, className, toCount, list, defaultUrl, callb
 			</Button>
 			{enabled && (
 				<Tooltip visible={visible}>
-					<SocialList toCount={toCount} list={list} defaultUrl={defaultUrl} trackId={trackId} isSubscribe={isSubscribe} trackName={trackName}/>
+					<SocialList toCount={toCount} list={list} defaultUrl={defaultUrl} isSubscribe={isSubscribe}/>
 				</Tooltip>
 			)}
 		</Wrapper>
@@ -38,7 +38,6 @@ ShareButton.propTypes = {
 	list: listType,
 	defaultUrl: PropTypes.string,
 	callback: PropTypes.func,
-	trackId: PropTypes.number,
 	isSubscribe: PropTypes.bool
 };
 
