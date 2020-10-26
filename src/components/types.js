@@ -5,7 +5,8 @@ const listType = PropTypes.arrayOf(
 		name: PropTypes.oneOf(['vk', 'mail', 'ok', 'facebook', 'twitter', 'telegram', 'viber', 'copy']),
 		textButton: PropTypes.string,
 		utm: PropTypes.string,
-		onClick: PropTypes.func
+		onClick: PropTypes.func,
+		defaultUrl: PropTypes.string
 	})
 );
 

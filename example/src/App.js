@@ -48,12 +48,12 @@ const App = () => {
 		{
 			name: 'telegram',
 			textButton: 'Telegram',
-			defaultUrl: `https://t.me/zaycevnetbot?start=trackId2167056`
+			defaultUrl: `https://t.me/zaycevnetbot?start=trackId2167057`
 		},
 		{
 			name: 'viber',
 			textButton: 'Viber',
-			defaultUrl: `viber://pa?chatURI=zaycevnet&context=trackId2167056`
+			defaultUrl: `viber://pa?chatURI=zaycevnet&context=trackId2167057`
 		}
 	]
 
