@@ -8,6 +8,7 @@
     "react": "link:../node_modules/react",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.3",
+    "styled-components": "^5.2.1",
     "react-share": "link:.."
   },
   "scripts": {
