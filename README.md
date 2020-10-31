@@ -59,6 +59,20 @@ const Example = () => {
             } //optional
         }
     ];
+
+const listSubscribe = [
+		{
+			name: 'telegram',
+			textButton: 'Telegram',
+			defaultUrl: `https://t.me/zaycevnetbot?start=trackId2167056` // community link
+		},
+		{
+			name: 'viber',
+			textButton: 'Viber',
+			defaultUrl: `viber://pa?chatURI=zaycevnet&context=trackId2167056` // community link
+		}
+	]
+
  
     return (
         <>
@@ -72,6 +86,18 @@ const Example = () => {
                 list={list}
                 defaultUrl="https://zaycev.net"
                 callback={() => console.log('Share click')}
+            />
+            <ShareButton
+                title="Subscribe"
+                style={{
+                    marginBottom: '1em'
+                }}
+                className="share"
+                toCount={true}
+                list={list}
+                defaultUrl="https://zaycev.net"
+                callback={() => console.log('Share click')}
+                isSubscribe
             />
             <SocialList
                 style={{
@@ -100,6 +126,7 @@ Name props | Default | Optional props | Description
 `list` | All social | array |  List name and title button  
 `defaultUrl` | | | Default Url
 `callback` | | | Callback from button click
+`isSubscribe` | | | Subscribe to the community
 
 #### SocialList
 
@@ -109,7 +136,7 @@ Name props | Default | Optional props | Description
 `className` | | | Extra className from Button
 `toCount` | true | true/false | Enabled/Disabled count social share
 `list` | All social | array |  List name and title button  
-`defaultUrl` | | | Default Url
+`defaultUrl` | | | Default Url | URl Subscribe community
 
 ## License
 

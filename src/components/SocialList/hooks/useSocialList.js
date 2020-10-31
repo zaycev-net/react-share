@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 
 import { socialUrl, requestUrl } from '../../../utils/urlList';
 
-const useSocialList = (list, toCount, defaultUrl) => {
+const useSocialList = (list, toCount, defaultUrl, isSubscribe) => {
 	const [countList, setCountList] = useState([]);
 	const [copyLink, setCopyLink] = useState('');
 
@@ -25,30 +25,45 @@ const useSocialList = (list, toCount, defaultUrl) => {
 			setCountList(list);
 
 			const newList = await Promise.all(
-				list.map(async ({ name, textButton, utm, onClick }) => {
-					const urlItem = socialUrl(utm ? url + utm : url)[name];
-
-					if (name === 'copy') {
+				list.map(async ({ name, textButton, utm, onClick, defaultUrl }) => {
+					if(isSubscribe) {
 						return {
 							name,
 							textButton,
-							onClick: async (e) => {
-								await navigator.clipboard.writeText(`${copyLink}`);
+							url: defaultUrl,
+							onClick
+						}
+					} else {
+						const urlItem = socialUrl(utm ? url + utm : url)[name];
 
-								if (onClick) {
-									onClick(e);
+						if (name === 'copy') {
+							return {
+								name,
+								textButton,
+								onClick: async (e) => {
+									try {
+										await navigator.clipboard.writeText(`${copyLink}`);
+
+										if (onClick) {
+											onClick(e, 'success');
+										}
+									} catch (e) {
+										if (onClick) {
+											onClick(e, 'error');
+										}
+									}
 								}
-							}
+							};
+						}
+
+						return {
+							name,
+							textButton,
+							url: urlItem,
+							count: toCount ? await request(name, url) : null,
+							onClick
 						};
 					}
-
-					return {
-						name,
-						textButton,
-						url: urlItem,
-						count: toCount ? await request(name, url) : null,
-						onClick
-					};
 				})
 			);
 

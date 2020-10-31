@@ -6,6 +6,7 @@ import OK from '../assets/social/ok.svg';
 import Facebook from '../assets/social/facebook.svg';
 import Twitter from '../assets/social/twitter.svg';
 import Telegram from '../assets/social/telegram.svg';
+import Viber from '../assets/social/viber.svg';
 import CopyLink from '../assets/copylink.svg';
 
 const renderIcon = (name) => {
@@ -22,6 +23,8 @@ const renderIcon = (name) => {
 			return <Twitter />;
 		case 'telegram':
 			return <Telegram />;
+		case 'viber':
+			return <Viber />
 		case 'copyLink':
 			return <CopyLink />;
 	}
