@@ -1,6 +1,6 @@
 {
   "name": "react-social-btn",
-  "version": "1.2.0",
+  "version": "1.2.8",
   "description": "Buttons Share on social networks with the number of users to rate for React.",
   "author": "zaycev-net",
   "license": "MIT",
@@ -73,6 +73,7 @@
     "rollup-plugin-babel": "^4.4.0"
   },
   "dependencies": {
-    "axios": "^0.21.0"
+    "axios": "^0.20.0",
+    "react-vk": "^5.0.2"
   }
 }
