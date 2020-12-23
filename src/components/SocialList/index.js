@@ -12,8 +12,8 @@ import { listDefaultProps, toCountDefaultProps } from '../configs';
 
 import Root from './styled.index';
 
-const SocialList = ({ style, className, list, toCount, defaultUrl, isSubscribe }) => {
-	const { countList } = useSocialList(list, toCount, defaultUrl, isSubscribe);
+const SocialList = ({ hideTooltip, style, className, list, toCount, defaultUrl, isSubscribe }) => {
+	const { countList } = useSocialList({list, toCount, defaultUrl, isSubscribe, hideTooltip});
 
 	return (
 		<Root style={style} className={className}>
@@ -29,6 +29,7 @@ const SocialList = ({ style, className, list, toCount, defaultUrl, isSubscribe }
 };
 
 SocialList.propTypes = {
+	hideTooltip: PropTypes.func,
 	defaultUrl: PropTypes.string,
 	className: PropTypes.string,
 	style: PropTypes.objectOf(PropTypes.string),

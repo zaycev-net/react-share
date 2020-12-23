@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 
 import { socialUrl, requestUrl } from '../../../utils/urlList';
 
-const useSocialList = (list, toCount, defaultUrl, isSubscribe) => {
+const useSocialList = ({list, toCount, defaultUrl, isSubscribe, hideTooltip}) => {
 	const [countList, setCountList] = useState([]);
 	const [copyLink, setCopyLink] = useState('');
 
@@ -43,6 +43,7 @@ const useSocialList = (list, toCount, defaultUrl, isSubscribe) => {
 								onClick: async (e) => {
 									try {
 										await navigator.clipboard.writeText(`${copyLink}`);
+										hideTooltip();
 
 										if (onClick) {
 											onClick(e, 'success');

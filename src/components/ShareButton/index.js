@@ -13,7 +13,7 @@ import { Wrapper, Button, Tooltip } from './styled.index';
 import { listDefaultProps, toCountDefaultProps } from '../configs';
 
 const ShareButton = ({ title, style, className, toCount, list, defaultUrl, callback, isSubscribe }) => {
-	const { ref, enabled, visible, toggleVisible } = useShareButton(callback, defaultUrl);
+	const { ref, enabled, visible, toggleVisible, hideTooltip } = useShareButton(callback, defaultUrl);
 
 	return (
 		<Wrapper ref={ref} className={className} style={style}>
@@ -23,7 +23,7 @@ const ShareButton = ({ title, style, className, toCount, list, defaultUrl, callb
 			</Button>
 			{enabled && (
 				<Tooltip visible={visible}>
-					<SocialList toCount={toCount} list={list} defaultUrl={defaultUrl} isSubscribe={isSubscribe}/>
+					<SocialList hideTooltip={hideTooltip} toCount={toCount} list={list} defaultUrl={defaultUrl} isSubscribe={isSubscribe}/>
 				</Tooltip>
 			)}
 		</Wrapper>

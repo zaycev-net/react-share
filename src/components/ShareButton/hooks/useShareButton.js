@@ -10,10 +10,14 @@ const useShareButton = (callback, defaultUrl) => {
 		setVisible((prev) => !prev);
 	};
 
+	const hideTooltip = () => {
+		setVisible(false);
+	}
+
 	const handleClickOutside = useCallback(
 		(event) => {
 			if (ref.current && !ref.current.contains(event.target)) {
-				setVisible(false);
+				hideTooltip();
 			} else if (callback) {
 				callback();
 			}
@@ -31,7 +35,8 @@ const useShareButton = (callback, defaultUrl) => {
 		ref,
 		enabled,
 		visible,
-		toggleVisible
+		toggleVisible,
+		hideTooltip
 	};
 };
 
