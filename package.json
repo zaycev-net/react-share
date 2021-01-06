@@ -73,7 +73,7 @@
     "rollup-plugin-babel": "^4.4.0"
   },
   "dependencies": {
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "react-vk": "^5.0.2"
   }
 }
