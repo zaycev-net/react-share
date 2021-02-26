@@ -36,27 +36,6 @@ const useSocialList = ({list, toCount, defaultUrl, isSubscribe, hideTooltip}) =>
 					} else {
 						const urlItem = socialUrl(utm ? url + utm : url)[name];
 
-						if (name === 'copy') {
-							return {
-								name,
-								textButton,
-								onClick: async (e) => {
-									try {
-										await navigator.clipboard.writeText(`${copyLink}`);
-										hideTooltip();
-
-										if (onClick) {
-											onClick(e, 'success');
-										}
-									} catch (e) {
-										if (onClick) {
-											onClick(e, 'error');
-										}
-									}
-								}
-							};
-						}
-
 						return {
 							name,
 							textButton,
